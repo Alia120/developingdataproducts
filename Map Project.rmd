@@ -1,0 +1,42 @@
+---
+title: "Map Project"
+author: "Alia Eccles"
+date: "July 30, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Wonders of the World Map in Leaflet
+
+Here is my leaflet map, complete with a date that is within the last two months.
+
+```{r map, fig.cap= "Wonders of the World created 7/30/18"}
+library(leaflet)
+df <- data.frame(name = c("Chichén Itza","Mount Everest", "Pyramids of the Sun and Moon", 
+                          "Victoria Falls", "Great Pyramids of Giza", "Forbidden City", "Grand Canyon",
+                          "Great Barrier Reef", "Taj Mahal"),
+                lat = c(20.6829,27.9881, 19.692500, -17.924400, 29.979200, 39.916534, 36.079728, -16.476625, 27.175225),
+                 lng = c(-88.5686,86.9253, -98.843800, 25.856700, 31.134400, 116.397101, -112.101008, 145.780493, 78.042144)
+                )
+
+df %>% 
+  leaflet() %>%
+  addProviderTiles(providers$OpenStreetMap) %>%
+  addMarkers(popup =df$name) %>%
+  addCircleMarkers(
+    lng = -60.456554, lat = 44.078039,
+    label = "Wonders of the World",
+    labelOptions = labelOptions(noHide = T),
+    fillColor = "transparent",
+    opacity = 0.01) %>%
+  addCircleMarkers(
+    lng = -60.456554, lat = 34.078039,
+    label = "Date Created: 7/30/18",
+    labelOptions = labelOptions(noHide = T),
+    fillColor = "transparent",
+    opacity = 0.01)
+```
+
