@@ -1,0 +1,26 @@
+---
+title: "MPG by Weight and Cylinders Week 3"
+author: "Alia Eccles"
+date: "July 11, 2019"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## MT Cars
+
+```{r pressure, echo=FALSE, message=FALSE}
+Sys.setenv("plotly_username"="AECCLES")
+Sys.setenv("plotly_api_key"="Cx9Br6vK2SueSYBdkVPj")
+
+library(plotly)
+library(ggplot2)
+
+p <- plot_ly(data = mtcars, x = ~wt, y = ~mpg, color = ~cyl)%>%
+  layout(title = "MPG by Weight and Cylinders")
+p
+```
+
+##Thanks
